@@ -1,0 +1,14 @@
+version: "2.1"
+services:
+  nfs:
+    build:
+      context: .
+    container_name: nfs
+    restart: unless-stopped
+    privileged: true
+    environment:
+      - SHARED_DIRECTORY=/data
+    volumes:
+      - ./share:/data
+    ports:
+      - 2049:2049
